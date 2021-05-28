@@ -26,31 +26,27 @@ bool coapClient::start(int port) {
 
 //get request
 uint16_t coapClient::get(IPAddress ip, int port, char *url) {
-	send(ip, port, url, COAP_CON, COAP_GET, NULL, 0, NULL, 0,0,NULL);
+	return send(ip, port, url, COAP_CON, COAP_GET, NULL, 0, NULL, 0,0,NULL);
 }
 
 //put request
 uint16_t coapClient::put(IPAddress ip, int port, char *url, char *payload, int payloadlen) {
-	send(ip, port, url, COAP_CON, COAP_PUT, NULL, 0, (uint8_t *)payload, payloadlen,0,NULL);
+	return send(ip, port, url, COAP_CON, COAP_PUT, NULL, 0, (uint8_t *)payload, payloadlen,0,NULL);
 }
 
 //post request
 uint16_t coapClient::post(IPAddress ip, int port, char *url, char *payload, int payloadlen) {
-	send(ip, port, url, COAP_CON, COAP_POST, NULL, 0, (uint8_t *)payload, payloadlen,0,NULL);
+	return send(ip, port, url, COAP_CON, COAP_POST, NULL, 0, (uint8_t *)payload, payloadlen,0,NULL);
 }
 
 //delete request
 uint16_t coapClient::delet(IPAddress ip, int port, char *url){
-	send(ip, port, url, COAP_CON, COAP_DELETE, NULL, 0, NULL, 0,0,NULL);
-
-
+	return send(ip, port, url, COAP_CON, COAP_DELETE, NULL, 0, NULL, 0,0,NULL);
 }
 
 //ping
 uint16_t coapClient::ping(IPAddress ip,int port){
-	
-	send (ip,port,NULL,COAP_CON,COAP_EMPTY,NULL,0,NULL,0,0,NULL);
-
+	return send (ip,port,NULL,COAP_CON,COAP_EMPTY,NULL,0,NULL,0,0,NULL);
 }
 
 //observe request
@@ -97,7 +93,7 @@ uint16_t coapClient::send(IPAddress ip, int port, char *url, COAP_TYPE type, COA
 		packet.optionnum++;
 	}
 	// send packet
-	sendPacket(packet, ip, port);
+	return sendPacket(packet, ip, port);
 }
 
 uint16_t coapClient::sendPacket(coapPacket &packet, IPAddress ip, int port) {
