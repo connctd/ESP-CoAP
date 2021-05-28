@@ -52,13 +52,11 @@ uint16_t coapClient::ping(IPAddress ip,int port){
 //observe request
 uint16_t coapClient::observe(IPAddress ip,int port,char *url,uint8_t optionbuffer){
 	uint8_t token=rand();
-	send(ip,port,url,COAP_CON,COAP_GET,&token,sizeof(token),NULL,0,COAP_OBSERVE,optionbuffer);
-
+	return send(ip,port,url,COAP_CON,COAP_GET,&token,sizeof(token),NULL,0,COAP_OBSERVE,optionbuffer);
 }
 
 uint16_t coapClient::observeCancel(IPAddress ip,int port,char *url){
-	send(ip,port,url,COAP_RESET,COAP_EMPTY,NULL,0,NULL,0,NULL,0);
-
+	return send(ip,port,url,COAP_RESET,COAP_EMPTY,NULL,0,NULL,0,NULL,0);
 }
 
 
