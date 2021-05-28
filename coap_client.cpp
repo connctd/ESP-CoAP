@@ -237,7 +237,7 @@ bool coapClient::loop() {
 			}
 		}
 
-		if (packet.type == COAP_ACK || packet.type ==  COAP_RESET) {
+		if (packet.type == COAP_ACK || packet.type ==  COAP_RESET || packet.type == COAP_CON || packet.type == COAP_NONCON) {
 			// call response function
 			resp(packet, udp.remoteIP(), udp.remotePort());
 
