@@ -183,7 +183,7 @@ void coapUri::add(callback call, String url,resource_dis resource[]) {
 						urlname[request->options[i].length] = NULL;
 						if(url.length() > 0)
 							url += "/";
-						url += urlname;
+						url += String(urlname);
 
 					}
 				}
